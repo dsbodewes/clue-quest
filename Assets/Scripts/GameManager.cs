@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     private int lives = 3;
 
+    public GameObject quizCanvas;
+
     public GameObject finalScoreCanvas;
     public UnityEngine.UI.Text finalScoreText;
     public UnityEngine.UI.Text livesText;
@@ -71,11 +73,14 @@ public class GameManager : MonoBehaviour
         if (lives <= 0)
         {
             EndGame();
+            return;
         }
     }
 
     private void NextQuestion()
     {
+        if (lives <= 0) return;
+
         currentQuestion++;
 
         if (currentQuestion < questions.Count)
@@ -99,8 +104,21 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         Debug.Log("Game Over! Score: " + score);
-        finalScoreCanvas.SetActive(true);
-        finalScoreText.text = "Final Score: " + score + "/" + questions.Count;
+
+        if (finalScoreCanvas != null)
+        {
+            quizCanvas.SetActive(false);
+        }
+
+        if (finalScoreCanvas != null)
+        {
+            finalScoreCanvas.SetActive(true);
+        }
+
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = "Final Score: " + score + "/" + questions.Count;
+        }
     }
 
     public void ReturnToMenu()
