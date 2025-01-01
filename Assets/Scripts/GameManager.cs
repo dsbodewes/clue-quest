@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class GameManager : MonoBehaviour
     public List<Question> questions = new List<Question>();
     private int currentQuestion = 0;
     private int score = 0;
+    private int lives = 3;
+
+    public GameObject finalScoreCanvas;
+    public UnityEngine.UI.Text finalScoreText;
+    public UnityEngine.UI.Text livesText;
 
     private void Awake()
     {
@@ -31,7 +37,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Call 
+    private void Start()
+    {
+        UpdateLivesUI();
+    }
+
     public Question GetCurrentQuestion()
     {
         return questions[currentQuestion];
@@ -46,10 +56,22 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wrong Answer");
+            LoseLife();
         }
 
         NextQuestion();
+    }
+
+    private void LoseLife()
+    {
+        lives--;
+        Debug.Log("Wrong Answer! Lives remaining: " + lives);
+        UpdateLivesUI();
+
+        if (lives <= 0)
+        {
+            EndGame();
+        }
     }
 
     private void NextQuestion()
@@ -66,8 +88,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateLivesUI()
+    {
+        if (livesText != null)
+        {
+            livesText.text = "Lives: " + lives;
+        }
+    }
+
     private void EndGame()
     {
         Debug.Log("Game Over! Score: " + score);
+        finalScoreCanvas.SetActive(true);
+        finalScoreText.text = "Final Score: " + score + "/" + questions.Count;
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
