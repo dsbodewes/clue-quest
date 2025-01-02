@@ -46,6 +46,16 @@ public class GameManager : MonoBehaviour
 
     public Question GetCurrentQuestion()
     {
+        if (questions == null || questions.Count == 0)
+        {
+            return null; 
+        }
+
+        if (currentQuestion < 0 || currentQuestion >= questions.Count)
+        {
+            return null; 
+        }
+
         return questions[currentQuestion];
     }
 
@@ -123,6 +133,6 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
