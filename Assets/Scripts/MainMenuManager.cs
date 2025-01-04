@@ -7,6 +7,12 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGame()
     {
+        SceneManager.LoadScene("ClueScene");
+    }
+
+    // ClueScene to Questions Scene
+    public void StartQuestions()
+    {
         SceneManager.LoadScene("Questions");
     }
 
