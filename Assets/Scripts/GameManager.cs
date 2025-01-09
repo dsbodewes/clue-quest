@@ -143,11 +143,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        questions.Clear();
+
         currentQuestion = 0;
         score = 0;
         lives = 3;
 
-        //Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
+        Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
         UpdateLivesUI();
     }
 }

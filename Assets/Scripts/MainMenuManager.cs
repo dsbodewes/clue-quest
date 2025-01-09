@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public GameObject mainMenu;
     public GameObject creditsCanvas;
 
     public void StartGame()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetGame();
+        }
+
         Debug.Log("Loading ClueScene...");
         SceneManager.LoadScene("ClueScene");
     }
@@ -16,13 +22,20 @@ public class MainMenuManager : MonoBehaviour
     // ClueScene to Questions Scene
     public void StartQuestions()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.ResetGame();
-        }
-
         Debug.Log("Loading Questions scene...");
         SceneManager.LoadScene("Questions");
+    }
+
+    public void ShowCredits()
+    {
+        mainMenu.SetActive(false);
+        creditsCanvas.SetActive(true);
+    }
+
+    public void BackToMenu()
+    {
+        mainMenu.SetActive(true);
+        creditsCanvas.SetActive(false);
     }
 
     public void QuitGame()

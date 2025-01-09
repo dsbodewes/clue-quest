@@ -11,6 +11,8 @@ public class QuizUI : MonoBehaviour
     private void Start()
     {
         DisplayQuestion();
+
+
     }
 
     void DisplayQuestion()
@@ -18,19 +20,27 @@ public class QuizUI : MonoBehaviour
         // Get the current question from the GameManager using the singleton instance
         var currentQuestion = GameManager.Instance.GetCurrentQuestion();
 
-        //if (currentQuestion != null) {
-        //    Debug.LogWarning("No current question to display.");
-        //    return;
-        //}
+        if (currentQuestion == null)
+        {
+            Debug.LogWarning("No current question to display.");
+            return;
+        }
 
         Debug.Log("Displaying Question: " + currentQuestion.questionText);
 
-        
         questionText.text = currentQuestion.questionText; // Update the UI
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            answerButtons[i].GetComponentInChildren<Text>().text = currentQuestion.answers[i];
+            if (i < currentQuestion.answers.Length)
+            {
+                answerButtons[i].GetComponentInChildren<Text>().text = currentQuestion.answers[i];
+            }
+            else
+            {
+                Debug.LogWarning("Not enough answers for button " + i);
+            }
+
             int answerIndex = i; // Necessary to avoid closure issues
             answerButtons[i].onClick.RemoveAllListeners();
             answerButtons[i].onClick.AddListener(() => OnAnswerSelected(answerIndex));
