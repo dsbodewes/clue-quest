@@ -48,11 +48,13 @@ public class GameManager : MonoBehaviour
     {
         if (questions == null || questions.Count == 0)
         {
+            Debug.LogWarning("No questions available.");
             return null; 
         }
 
         if (currentQuestion < 0 || currentQuestion >= questions.Count)
         {
+            Debug.LogWarning($"Invalid currentQuestion index: {currentQuestion}. Total questions: {questions.Count}");
             return null; 
         }
 
@@ -78,10 +80,12 @@ public class GameManager : MonoBehaviour
     {
         lives--;
         Debug.Log("Wrong Answer! Lives remaining: " + lives);
+
         UpdateLivesUI();
 
         if (lives <= 0)
         {
+            //Debug.Log("Lives <= 0: Ending game");
             EndGame();
             return;
         }
@@ -92,6 +96,7 @@ public class GameManager : MonoBehaviour
         if (lives <= 0) return;
 
         currentQuestion++;
+        Debug.Log("Next question: " + currentQuestion);
 
         if (currentQuestion < questions.Count)
         {
@@ -134,5 +139,15 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ResetGame()
+    {
+        currentQuestion = 0;
+        score = 0;
+        lives = 3;
+
+        //Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
+        UpdateLivesUI();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuizUI : MonoBehaviour
 {
-    public Text questionText;  // This is the text component that will display the question
+    public Text questionText;  
     public Button[] answerButtons; // This is an array of buttons that will display the answers
 
     private void Start()
@@ -16,10 +16,17 @@ public class QuizUI : MonoBehaviour
     void DisplayQuestion()
     {
         // Get the current question from the GameManager using the singleton instance
-        var currentQuestion = GameManager.Instance.GetCurrentQuestion(); 
+        var currentQuestion = GameManager.Instance.GetCurrentQuestion();
 
-        // Update the UI
-        questionText.text = currentQuestion.questionText;
+        //if (currentQuestion != null) {
+        //    Debug.LogWarning("No current question to display.");
+        //    return;
+        //}
+
+        Debug.Log("Displaying Question: " + currentQuestion.questionText);
+
+        
+        questionText.text = currentQuestion.questionText; // Update the UI
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
@@ -27,7 +34,6 @@ public class QuizUI : MonoBehaviour
             int answerIndex = i; // Necessary to avoid closure issues
             answerButtons[i].onClick.RemoveAllListeners();
             answerButtons[i].onClick.AddListener(() => OnAnswerSelected(answerIndex));
-
         }
     }
 
