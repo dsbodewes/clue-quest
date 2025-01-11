@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         UpdateLivesUI();
     }
 
@@ -114,6 +115,10 @@ public class GameManager : MonoBehaviour
         {
             livesText.text = "Lives: " + lives;
         }
+        else
+        {
+            Debug.LogWarning("Lives UI Text is not assigned.");
+        }
     }
 
     private void EndGame()
@@ -139,6 +144,9 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+
+        // Remove if causing issues
+        //ResetGame();
     }
 
     public void ResetGame()
@@ -149,7 +157,95 @@ public class GameManager : MonoBehaviour
         score = 0;
         lives = 3;
 
+        Debug.Log($"Game Reset: Current Question = {currentQuestion}");
+
+        questions.Add(new Question
+        {
+            questionText = "Yuh or Nuh?",
+            answers = new string[] { "Yuh", "Nuh"},
+            correctAnswer = 0
+        });
+
+        questions.Add(new Question
+        {
+            questionText = "Blue or Red?",
+            answers = new string[] { "Blue", "Green" },
+            correctAnswer = 0
+        });
+
+        questions.Add(new Question
+        {
+            questionText = "9 + 10?",
+            answers = new string[] { "19", "21" },
+            correctAnswer = 1
+        });
+
+        questions.Add(new Question
+        {
+            questionText = "Fortnite?",
+            answers = new string[] { "Yes", "No" },
+            correctAnswer = 0
+        });
+
+        questions.Add(new Question
+        {
+            questionText = "A or B?",
+            answers = new string[] { "A", "B" },
+            correctAnswer = 1
+        });
+
+
         Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
+        Debug.Log("Questions reloaded. Total questions: " + questions.Count);
+        ReassignReferences();
         UpdateLivesUI();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene loaded: " + scene.name);
+        ReassignReferences();
+    }
+
+    public void ReassignReferences()
+    {
+        if (livesText == null)
+        {
+            livesText = GameObject.Find("LivesText")?.GetComponent<UnityEngine.UI.Text>();
+        }
+
+        if (quizCanvas == null)
+        {
+            quizCanvas = GameObject.Find("QuizCanvas");
+        }
+
+        if (finalScoreCanvas == null)
+        {
+            finalScoreCanvas = GameObject.Find("FinalCanvas");
+        }
+
+        if (finalScoreText == null && finalScoreCanvas != null)
+        {
+            finalScoreText = finalScoreCanvas.GetComponentInChildren<UnityEngine.UI.Text>();
+            Debug.Log("FinalScoreText reassigned.");
+        }
+
+        Debug.Log("Reassigned GameManager references.");
+        UpdateLivesUI();
+    }
+
+    public int GetCurrentQuestionIndex()
+    {
+        return currentQuestion;
     }
 }

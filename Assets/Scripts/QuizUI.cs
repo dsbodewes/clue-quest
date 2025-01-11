@@ -11,17 +11,31 @@ public class QuizUI : MonoBehaviour
     private void Start()
     {
         DisplayQuestion();
-
-
     }
 
     void DisplayQuestion()
     {
+        if (GameManager.Instance.questions == null || GameManager.Instance.questions.Count == 0)
+        {
+            Debug.LogWarning("No questions available.");
+            return;
+        }
+
+        if (GameManager.Instance.GetCurrentQuestion() == null)
+        {
+            Debug.LogWarning("No current question to display.");
+            return;
+        }
+
+        Debug.Log($"Displaying Question {GameManager.Instance.GetCurrentQuestionIndex() + 1} of {GameManager.Instance.questions.Count}");
+
+
         // Get the current question from the GameManager using the singleton instance
         var currentQuestion = GameManager.Instance.GetCurrentQuestion();
 
         if (currentQuestion == null)
         {
+
             Debug.LogWarning("No current question to display.");
             return;
         }
@@ -38,7 +52,7 @@ public class QuizUI : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Not enough answers for button " + i);
+                Debug.LogWarning("Not enough answers for button {i}");
             }
 
             int answerIndex = i; // Necessary to avoid closure issues
