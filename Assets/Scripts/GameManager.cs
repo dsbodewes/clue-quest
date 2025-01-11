@@ -41,7 +41,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if (finalScoreCanvas != null)
+        {
+            DontDestroyOnLoad(finalScoreCanvas);
+        }
+
         UpdateLivesUI();
     }
 
@@ -215,6 +219,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Scene loaded: " + scene.name);
         ReassignReferences();
+        Debug.Log($"FinalScoreCanvas: {finalScoreCanvas}, FinalScoreText: {finalScoreText}");
     }
 
     public void ReassignReferences()
@@ -222,22 +227,25 @@ public class GameManager : MonoBehaviour
         if (livesText == null)
         {
             livesText = GameObject.Find("LivesText")?.GetComponent<UnityEngine.UI.Text>();
+            if (livesText == null) Debug.LogError("Failed to find LivesText in the scene.");
         }
 
         if (quizCanvas == null)
         {
             quizCanvas = GameObject.Find("QuizCanvas");
+            if (quizCanvas == null) Debug.LogError("Failed to find QuizCanvas in the scene.");
         }
 
         if (finalScoreCanvas == null)
         {
-            finalScoreCanvas = GameObject.Find("FinalCanvas");
+            finalScoreCanvas = GameObject.Find("FinalCanvas"); // Match scene name
+            if (finalScoreCanvas == null) Debug.LogError("Failed to find FinalCanvas in the scene.");
         }
 
         if (finalScoreText == null && finalScoreCanvas != null)
         {
             finalScoreText = finalScoreCanvas.GetComponentInChildren<UnityEngine.UI.Text>();
-            Debug.Log("FinalScoreText reassigned.");
+            if (finalScoreText == null) Debug.LogError("Failed to find FinalScoreText under FinalCanvas.");
         }
 
         Debug.Log("Reassigned GameManager references.");
