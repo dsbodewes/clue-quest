@@ -218,6 +218,21 @@ public class GameManager : MonoBehaviour
             answers = new string[] { "Kitchen Knife", "Pocket Knife" },
             correctAnswer = 1
         });
+
+        questions.Add(new Question
+        {
+            questionText = "Is the murder weapon cleaned?",
+            answers = new string[] { "Yes", "No" },
+            correctAnswer = 0
+        });
+
+        questions.Add(new Question
+        {
+            questionText = "Did he leave through the door or the broken window?",
+            answers = new string[] { "Door", "Window" },
+            correctAnswer = 0
+        });
+
         Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
         Debug.Log("Questions reloaded. Total questions: " + questions.Count);
         ReassignReferences();
