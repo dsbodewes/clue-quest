@@ -35,7 +35,6 @@ public class QuizUI : MonoBehaviour
 
         if (currentQuestion == null)
         {
-
             Debug.LogWarning("No current question to display.");
             return;
         }
