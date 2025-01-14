@@ -26,6 +26,12 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Questions");
     }
 
+    public void Settings()
+    {
+        mainMenu.SetActive(false);
+        creditsCanvas.SetActive(true);
+    }
+
     public void ShowCredits()
     {
         mainMenu.SetActive(false);

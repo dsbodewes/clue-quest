@@ -433,8 +433,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 180
-    m_FontStyle: 2
+    m_FontSize: 100
+    m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 180
@@ -1108,28 +1108,38 @@ MonoBehaviour:
   questions:
   - questionText: Is it a rainy night or a rainy day?
     answers:
-    - Rainy Night
-    - Rainy Day
+    - Rainy night
+    - Rainy day
     correctAnswer: 0
-  - questionText: Blue or Red?
+  - questionText: Does the house have two windows on the side with the left window
+      broken, or is the right window broken?
     answers:
-    - Blue
-    - Green
+    - Left window
+    - Right window
     correctAnswer: 0
-  - questionText: 9 + 10?
+  - questionText: Is there a dark blue piece of cloth stuck to one of the points
+      of the broken glass, or is it a dark red piece of cloth?
     answers:
-    - 19
-    - 21
+    - Navy cloth
+    - Red cloth
     correctAnswer: 1
-  - questionText: Fortnite?
+  - questionText: Are there footprints on the kitchen floor, or are there bloodstains
+      on the kitchen floor?
     answers:
-    - Yes
-    - No
+    - Footprints
+    - Bloodstains
     correctAnswer: 0
-  - questionText: A or B?
+  - questionText: Is the murdered woman lying in her bed, or is she lying next to
+      her bed?
     answers:
-    - A
-    - B
+    - In her bed
+    - Next to her bed
+    correctAnswer: 1
+  - questionText: Are the bed and the ground free of blood, or are the bed and the
+      ground covered in blood?
+    answers:
+    - Free of blood
+    - Covered in blood
     correctAnswer: 1
   quizCanvas: {fileID: 583330782}
   finalScoreCanvas: {fileID: 1475894019}
@@ -1499,7 +1509,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1578,7 +1588,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

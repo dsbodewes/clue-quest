@@ -165,36 +165,43 @@ public class GameManager : MonoBehaviour
 
         questions.Add(new Question
         {
-            questionText = "Yuh or Nuh?",
-            answers = new string[] { "Yuh", "Nuh"},
+            questionText = "Is it a rainy night or a rainy day?",
+            answers = new string[] { "Rainy night", "Rainy day"},
             correctAnswer = 0
         });
 
         questions.Add(new Question
         {
-            questionText = "Blue or Red?",
-            answers = new string[] { "Blue", "Green" },
+            questionText = "Does the house have two windows on the side with the left window broken, or is the right window broken?",
+            answers = new string[] { "Left window", "Right window" },
             correctAnswer = 0
         });
 
         questions.Add(new Question
         {
-            questionText = "9 + 10?",
-            answers = new string[] { "19", "21" },
+            questionText = "Is there a dark blue piece of cloth stuck to one of the points of the broken glass, or is it a dark red piece of cloth?",
+            answers = new string[] { "Blue cloth", "Red cloth" },
             correctAnswer = 1
         });
 
         questions.Add(new Question
         {
-            questionText = "Fortnite?",
-            answers = new string[] { "Yes", "No" },
+            questionText = "Are there footprints on the kitchen floor, or are there bloodstains on the kitchen floor?",
+            answers = new string[] { "Footprints", "Bloodstains" },
             correctAnswer = 0
         });
 
         questions.Add(new Question
         {
-            questionText = "A or B?",
-            answers = new string[] { "A", "B" },
+            questionText = "Is the murdered woman lying in her bed, or is she lying next to her bed?",
+            answers = new string[] { "In her bed", "Next to her bed" },
+            correctAnswer = 1
+        });
+
+        questions.Add(new Question
+        {
+            questionText = "Are the bed and the ground free of blood, or are the bed and the ground covered in blood?",
+            answers = new string[] { "Free of blood", "Covered in blood" },
             correctAnswer = 1
         });
 
@@ -248,7 +255,6 @@ public class GameManager : MonoBehaviour
             if (finalScoreText == null) Debug.LogError("Failed to find FinalScoreText under FinalCanvas.");
         }
 
-        Debug.Log("Reassigned GameManager references.");
         UpdateLivesUI();
     }
 
