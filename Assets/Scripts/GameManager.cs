@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
         {
             questionText = "Is there a dark blue piece of cloth stuck to one of the points of the broken glass, or is it a dark red piece of cloth?",
             answers = new string[] { "Blue cloth", "Red cloth" },
-            correctAnswer = 1
+            correctAnswer = 0
         });
 
         questions.Add(new Question
@@ -205,7 +205,19 @@ public class GameManager : MonoBehaviour
             correctAnswer = 1
         });
 
+        questions.Add(new Question
+        {
+            questionText = "Was the note with 'Remember Me ;)' in her hand or on the nightstand?",
+            answers = new string[] { "In hand", "Nightstand" },
+            correctAnswer = 0
+        });
 
+        questions.Add(new Question
+        {
+            questionText = "Was the murder weapon a kitchen knife or a pocket knife?",
+            answers = new string[] { "Kitchen Knife", "Pocket Knife" },
+            correctAnswer = 1
+        });
         Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
         Debug.Log("Questions reloaded. Total questions: " + questions.Count);
         ReassignReferences();
