@@ -53,13 +53,11 @@ public class GameManager : MonoBehaviour
     {
         if (questions == null || questions.Count == 0)
         {
-            Debug.LogWarning("No questions available.");
             return null; 
         }
 
         if (currentQuestion < 0 || currentQuestion >= questions.Count)
         {
-            Debug.LogWarning($"Invalid currentQuestion index: {currentQuestion}. Total questions: {questions.Count}");
             return null; 
         }
 
@@ -71,7 +69,6 @@ public class GameManager : MonoBehaviour
         if (selectedAnswer == questions[currentQuestion].correctAnswer)
         {
             score++;
-            Debug.Log("Correct!");
         }
         else
         {
@@ -84,13 +81,11 @@ public class GameManager : MonoBehaviour
     private void LoseLife()
     {
         lives--;
-        Debug.Log("Wrong Answer! Lives remaining: " + lives);
 
         UpdateLivesUI();
 
         if (lives <= 0)
         {
-            //Debug.Log("Lives <= 0: Ending game");
             EndGame();
             return;
         }
@@ -101,7 +96,6 @@ public class GameManager : MonoBehaviour
         if (lives <= 0) return;
 
         currentQuestion++;
-        Debug.Log("Next question: " + currentQuestion);
 
         if (currentQuestion < questions.Count)
         {
@@ -119,16 +113,10 @@ public class GameManager : MonoBehaviour
         {
             livesText.text = "Lives: " + lives;
         }
-        else
-        {
-            Debug.LogWarning("Lives UI Text is not assigned.");
-        }
     }
 
     private void EndGame()
     {
-        Debug.Log("Game Over! Score: " + score);
-
         if (finalScoreCanvas != null)
         {
             quizCanvas.SetActive(false);
@@ -160,8 +148,6 @@ public class GameManager : MonoBehaviour
         currentQuestion = 0;
         score = 0;
         lives = 3;
-
-        Debug.Log($"Game Reset: Current Question = {currentQuestion}");
 
         questions.Add(new Question
         {
@@ -205,9 +191,6 @@ public class GameManager : MonoBehaviour
             correctAnswer = 1
         });
 
-
-        Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
-        Debug.Log("Questions reloaded. Total questions: " + questions.Count);
         ReassignReferences();
         UpdateLivesUI();
     }
@@ -224,9 +207,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Scene loaded: " + scene.name);
         ReassignReferences();
-        Debug.Log($"FinalScoreCanvas: {finalScoreCanvas}, FinalScoreText: {finalScoreText}");
     }
 
     public void ReassignReferences()
@@ -234,25 +215,21 @@ public class GameManager : MonoBehaviour
         if (livesText == null)
         {
             livesText = GameObject.Find("LivesText")?.GetComponent<UnityEngine.UI.Text>();
-            if (livesText == null) Debug.LogError("Failed to find LivesText in the scene.");
         }
 
         if (quizCanvas == null)
         {
             quizCanvas = GameObject.Find("QuizCanvas");
-            if (quizCanvas == null) Debug.LogError("Failed to find QuizCanvas in the scene.");
         }
 
         if (finalScoreCanvas == null)
         {
-            finalScoreCanvas = GameObject.Find("FinalCanvas"); // Match scene name
-            if (finalScoreCanvas == null) Debug.LogError("Failed to find FinalCanvas in the scene.");
+            finalScoreCanvas = GameObject.Find("FinalCanvas");
         }
 
         if (finalScoreText == null && finalScoreCanvas != null)
         {
             finalScoreText = finalScoreCanvas.GetComponentInChildren<UnityEngine.UI.Text>();
-            if (finalScoreText == null) Debug.LogError("Failed to find FinalScoreText under FinalCanvas.");
         }
 
         UpdateLivesUI();

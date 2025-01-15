@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject creditsCanvas;
+    public GameObject settingsCanvas;
 
     public void StartGame()
     {
@@ -15,21 +16,19 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.ResetGame();
         }
 
-        Debug.Log("Loading ClueScene...");
         SceneManager.LoadScene("ClueScene");
     }
 
     // ClueScene to Questions Scene
     public void StartQuestions()
     {
-        Debug.Log("Loading Questions scene...");
         SceneManager.LoadScene("Questions");
     }
 
     public void Settings()
     {
         mainMenu.SetActive(false);
-        creditsCanvas.SetActive(true);
+        settingsCanvas.SetActive(true);
     }
 
     public void ShowCredits()
@@ -46,7 +45,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitting game...");
         Application.Quit();
 
         #if UNITY_EDITOR
