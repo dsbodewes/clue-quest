@@ -136,9 +136,6 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-
-        // Remove if causing issues
-        //ResetGame();
     }
 
     public void ResetGame()
