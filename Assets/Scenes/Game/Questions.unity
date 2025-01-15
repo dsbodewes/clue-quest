@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questions:
-  - questionText: Is it a rainy night or a rainy day?
+  - questionText: Was it a rainy night or a rainy day?
     answers:
     - Rainy night
     - Rainy day
@@ -1117,19 +1117,19 @@ MonoBehaviour:
     - Left window
     - Right window
     correctAnswer: 0
-  - questionText: Is there a dark blue piece of cloth stuck to one of the points
+  - questionText: Was there a dark blue piece of cloth stuck to one of the points
       of the broken glass, or is it a dark red piece of cloth?
     answers:
-    - Navy cloth
+    - Blue cloth
     - Red cloth
-    correctAnswer: 1
+    correctAnswer: 0
   - questionText: Are there footprints on the kitchen floor, or are there bloodstains
       on the kitchen floor?
     answers:
     - Footprints
     - Bloodstains
     correctAnswer: 0
-  - questionText: Is the murdered woman lying in her bed, or is she lying next to
+  - questionText: Was the murdered woman lying in her bed, or is she lying next to
       her bed?
     answers:
     - In her bed
@@ -1151,7 +1151,7 @@ MonoBehaviour:
     - Kitchen Knife
     - Pocket Knife
     correctAnswer: 1
-  - questionText: Is the murder weapon cleaned?
+  - questionText: Was the murder weapon cleaned?
     answers:
     - Yes
     - No
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   - questionText: Did he leave through the door or the broken window?
     answers:
     - Door
-    - Window
+    - Broken window
     correctAnswer: 0
   quizCanvas: {fileID: 583330782}
   finalScoreCanvas: {fileID: 1475894019}

@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
 
         questions.Add(new Question
         {
-            questionText = "Is it a rainy night or a rainy day?",
+            questionText = "Was it a rainy night or a rainy day?",
             answers = new string[] { "Rainy night", "Rainy day"},
             correctAnswer = 0
         });
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
 
         questions.Add(new Question
         {
-            questionText = "Is there a dark blue piece of cloth stuck to one of the points of the broken glass, or is it a dark red piece of cloth?",
+            questionText = "Was there a dark blue piece of cloth stuck to one of the points of the broken glass, or is it a dark red piece of cloth?",
             answers = new string[] { "Blue cloth", "Red cloth" },
             correctAnswer = 0
         });
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
 
         questions.Add(new Question
         {
-            questionText = "Is the murdered woman lying in her bed, or is she lying next to her bed?",
+            questionText = "Was the murdered woman lying in her bed, or is she lying next to her bed?",
             answers = new string[] { "In her bed", "Next to her bed" },
             correctAnswer = 1
         });
@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
 
         questions.Add(new Question
         {
-            questionText = "Is the murder weapon cleaned?",
+            questionText = "Was the murder weapon cleaned?",
             answers = new string[] { "Yes", "No" },
             correctAnswer = 0
         });
@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
         questions.Add(new Question
         {
             questionText = "Did he leave through the door or the broken window?",
-            answers = new string[] { "Door", "Window" },
+            answers = new string[] { "Door", "Broken window" },
             correctAnswer = 0
         });
 
