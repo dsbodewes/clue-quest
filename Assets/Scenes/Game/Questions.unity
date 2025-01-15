@@ -1141,6 +1141,26 @@ MonoBehaviour:
     - Free of blood
     - Covered in blood
     correctAnswer: 1
+  - questionText: Was the 'Remember Me ;)' note in her hand or on the nightstand?
+    answers:
+    - In hand
+    - Nightstand
+    correctAnswer: 0
+  - questionText: Was the murder weapon a kitchen knife or a pocket knife?
+    answers:
+    - Kitchen Knife
+    - Pocket Knife
+    correctAnswer: 1
+  - questionText: Is the murder weapon cleaned?
+    answers:
+    - Yes
+    - No
+    correctAnswer: 0
+  - questionText: Did he leave through the door or the broken window?
+    answers:
+    - Door
+    - Window
+    correctAnswer: 0
   quizCanvas: {fileID: 583330782}
   finalScoreCanvas: {fileID: 1475894019}
   finalScoreText: {fileID: 2000702559}
