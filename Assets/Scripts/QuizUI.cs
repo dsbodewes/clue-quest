@@ -20,11 +20,6 @@ public class QuizUI : MonoBehaviour
             return;
         }
 
-        if (GameManager.Instance.GetCurrentQuestion() == null)
-        {
-            return;
-        }
-
         // Get the current question from the GameManager using the singleton instance
         var currentQuestion = GameManager.Instance.GetCurrentQuestion();
 
@@ -40,6 +35,11 @@ public class QuizUI : MonoBehaviour
             if (i < currentQuestion.answers.Length)
             {
                 answerButtons[i].GetComponentInChildren<Text>().text = currentQuestion.answers[i];
+                answerButtons[i].gameObject.SetActive(true); // Ensure the button is visible
+            }
+            else
+            {
+                answerButtons[i].gameObject.SetActive(false); // Hide unused buttons
             }
 
             int answerIndex = i; // Necessary to avoid closure issues
