@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 0}
   creditsCanvas: {fileID: 0}
+  settingsCanvas: {fileID: 0}
 --- !u!4 &182466675
 Transform:
   m_ObjectHideFlags: 0
@@ -759,7 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.90196085, g: 0.8352942, b: 0.7137255, a: 1}
+  m_Color: {r: 0.92156863, g: 0.8509804, b: 0.73333335, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

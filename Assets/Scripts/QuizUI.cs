@@ -5,8 +5,15 @@ using UnityEngine.UI;
 
 public class QuizUI : MonoBehaviour
 {
-    public Text questionText;  
-    public Button[] answerButtons; // This is an array of buttons that will display the answers
+    public Text questionText;
+    public Button[] answerButtons;
+
+    public Image background1;
+    public Image background2;
+
+    public Sprite[] backgrounds1;
+    public Sprite[] backgrounds2;
+
 
     private void Start()
     {
@@ -46,17 +53,40 @@ public class QuizUI : MonoBehaviour
             answerButtons[i].onClick.RemoveAllListeners();
             answerButtons[i].onClick.AddListener(() => OnAnswerSelected(answerIndex));
         }
-    }
 
-    void OnAnswerSelected(int selectedAnswer)
-    {
-        // Pass the player's choice to the GameManager
-        GameManager.Instance.SubmitAnswer(selectedAnswer);
+        UpdateBackgrounds(GameManager.Instance.GetCurrentQuestionIndex());
 
-        // Update the UI for the next question
-        if (GameManager.Instance.GetCurrentQuestion() != null)
+        void UpdateBackgrounds(int questionIndex)
         {
-            DisplayQuestion();
+            if (backgrounds1 != null && backgrounds1.Length > questionIndex)
+            {
+                background1.sprite = backgrounds1[questionIndex];
+            }
+            else
+            {
+                Debug.LogWarning("Background1 sprite not assigned for question index: " + questionIndex);
+            }
+
+            if (backgrounds2 != null && backgrounds2.Length > questionIndex)
+            {
+                background2.sprite = backgrounds2[questionIndex];
+            }
+            else
+            {
+                Debug.LogWarning("Background2 sprite not assigned for question index: " + questionIndex);
+            }
+        }
+
+        void OnAnswerSelected(int selectedAnswer)
+        {
+            // Pass the player's choice to the GameManager
+            GameManager.Instance.SubmitAnswer(selectedAnswer);
+
+            // Update the UI for the next question
+            if (GameManager.Instance.GetCurrentQuestion() != null)
+            {
+                DisplayQuestion();
+            }
         }
     }
 }
