@@ -8,14 +8,12 @@ public class btnFX : MonoBehaviour {
     public AudioClip hoverFx;
     public AudioClip clickFx;
 
-
     public void Hoversound()
     {
         myFx.PlayOneShot (hoverFx); 
     }
-     public void ClickSound()
+    public void ClickSound()
     {
         myFx.PlayOneShot (clickFx); 
     }
-
 }
