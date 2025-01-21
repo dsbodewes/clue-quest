@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject quizCanvas;
 
+    // Don't destroy the final score canvas when loading a new game
     public GameObject finalScoreCanvas;
     public UnityEngine.UI.Text finalScoreText;
     public UnityEngine.UI.Text livesText;
@@ -215,9 +216,6 @@ public class GameManager : MonoBehaviour
             answers = new string[] { "Door", "Broken window" },
             correctAnswer = 0
         });
-
-        Debug.Log("Game Reset: Lives = " + lives + ", Score = " + score + ", CurrentQuestion = " + currentQuestion);
-        Debug.Log("Questions reloaded. Total questions: " + questions.Count);
 
         ReassignReferences();
         UpdateLivesUI();

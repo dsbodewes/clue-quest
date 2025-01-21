@@ -62,18 +62,10 @@ public class QuizUI : MonoBehaviour
             {
                 background1.sprite = backgrounds1[questionIndex];
             }
-            else
-            {
-                Debug.LogWarning("Background1 sprite not assigned for question index: " + questionIndex);
-            }
 
             if (backgrounds2 != null && backgrounds2.Length > questionIndex)
             {
                 background2.sprite = backgrounds2[questionIndex];
-            }
-            else
-            {
-                Debug.LogWarning("Background2 sprite not assigned for question index: " + questionIndex);
             }
         }
 
