@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
         UpdateLivesUI();
     }
 
-    private void OnEnable()
+    private void OnEnable() 
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
